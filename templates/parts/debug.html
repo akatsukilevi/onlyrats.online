@@ -1,0 +1,4 @@
+{% if config.mode == 'serve' %}
+<!-- Attach the Tera context to JS for ease of debugging -->
+<script>window.ctx = JSON.parse({{ __tera_context | json_encode | safe }})</script>
+{% endif %}

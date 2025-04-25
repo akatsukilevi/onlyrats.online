@@ -1,0 +1,36 @@
+{% set title = config.title %}
+{% set description = config.description %}
+{% set banner = "" %}
+{% if page %}
+{% set title = config.title ~ " - " ~ page.title %}
+{% if page.extra.tldr %}
+{% set description = "TL;DR: " ~ page.extra.tldr %}
+{% endif %}
+{% if page.extra.banner %}
+{% set banner = page.extra.banner %}
+{% endif %}
+{% elif section %}
+{% set title = config.title ~ " - " ~ section.title %}
+{% if section.extra.tldr %}
+{% set description = section.extra.tldr %}
+{% elif section.content %}
+{% set description = section.content %}
+{% endif %}
+{% if section.extra.banner %}
+{% set banner = section.extra.banner %}
+{% endif %}
+{% endif %}
+<!-- Page metadata-->
+<meta name="title" content="{{ title | striptags }}" />
+<meta name="description" content="{{ description | striptags }}" />
+
+<!-- Boring stuff you need to have a website show that embed thingy -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ config.base_url }}" />
+<meta property="og:title" content="{{ title | striptags }}" />
+<meta property="og:description" content="{{ description | striptags }}" />
+{% if banner == "" -%}
+<meta property="og:image" content="/img/themes/{{ config.extra.theme }}/banner.png" />
+{% else -%}
+<meta property="og:image" content="{{ banner }}" />
+{% endif %}

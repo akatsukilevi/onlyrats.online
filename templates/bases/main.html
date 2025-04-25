@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+This is actually just a shitty edit of my actual website
+You can check the actual website source code at: https://codeberg.org/akatsukilevi/website/
+-->
+
+<head>
+  <!-- Base metadata -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Title -->
+  <title>{{ config.title }}{% if section.title %} - {{ section.title }}{% endif %}</title>
+
+  {% include "parts/meta.html" %}
+
+  <!-- Theme and styles -->
+  <link rel="stylesheet" href="/base/index.css">
+  <link rel="stylesheet" href="/themes/{{ config.extra.theme }}/{{ config.extra.theme }}.css">
+
+  <!-- Icon -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- RSS Support -->
+  {% block rss -%}
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ get_url(path=" rss.xml", trailing_slash=false)
+    }}">
+  {% endblock %}
+
+  {% include "parts/debug.html" %}
+  {% block head %}{% endblock head %}
+</head>
+
+<body>
+  {% include "parts/header.html" %}
+  {% include "parts/menu.html" %}
+  <main>
+    <section>
+      {% block content %}{% endblock content %}
+    </section>
+  </main>
+  {% include "parts/footer.html" %}
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+{% extends "bases/main.html" %}
+
+{% block content %}
+<article>
+  <div class="subtitle">
+    {% if page.title %}{{ page.title }}{% endif %}
+    <ul class="meta">
+      {#- Date indicator -#}
+      {% if page.date %}
+        <li class="date">{{ page.date }}</li>
+      {% endif %}
+
+      {#- Draft indicator -#}
+      {% if page.draft %}
+        <li class="draft-label">Draft</li>
+      {% endif %}
+
+      {#- Author(s) -#}
+      {% if page.authors %}
+      {% for author in page.authors %}
+        <li class="author">{{ author }}</li>
+      {% endfor %}
+      {% endif %}
+
+      {#- Tags -#}
+      {%- if page.taxonomies and page.taxonomies.tags -%}
+        {%- for tag in page.taxonomies.tags -%}
+          <li class="tag">
+            <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}">{{ tag }}</a>
+          </li>
+        {%- endfor -%}
+      {%- endif -%}
+    </ul>
+  </div>
+  {% if page.extra.tldr %}
+  <div class="tldr">
+    <span title="Too long; didn't read (summary)">TL;DR</span>
+    <p>{{ page.extra.tldr | markdown | safe }}</p>
+  </div>
+  {% endif %}
+  {% if page.content %}
+  <div class="content">
+    {{ page.content | markdown | safe  }}
+  </div>
+  {% endif %}
+</article>
+{% endblock content %}

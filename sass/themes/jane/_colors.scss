@@ -1,0 +1,35 @@
+:root {
+  --page-bg: url('/img/themes/jane/background.jpg');
+  --header-bg: url('/img/themes/jane/banner.png');
+
+  --background: hsl(238, 9%, 18%);
+  --foreground: hsl(242, 67%, 89%);
+  --border-color: hsl(242, 8%, 32%);
+
+  --link: hsl(279, 100%, 76%);
+  --shadow: hsl(243, 10%, 13%);
+  --muted: hsl(242, 8%, 49%);
+
+  //--nav-bg: linear-gradient(to bottom, #797467 0%, #5b574d 59%, #423f38 60%, #2c2a26 100%);
+  --nav-bg: linear-gradient(to bottom, hsl(279, 100%, 76%) 0%, hsl(270, 86%, 51%) 59%, hsl(272, 98%, 38%) 60%, hsl(273, 66%, 44%) 100%);
+  --nav-hover-bg: linear-gradient(to bottom, hsl(273, 68%, 45%) 0%, hsl(273, 97%, 37%) 59%, hsl(273, 99%, 27%) 60%, hsl(273, 99%, 34%) 100%);
+  --nav-weight: bold;
+  --nav-fg: hsl(242, 67%, 89%);
+  --nav-hover-fg: hsl(242, 67%, 89%);
+
+  --article-bg: hsl(240, 8%, 15%);
+  --article-heading-bg: linear-gradient(to bottom, hsl(243, 8%, 44%) 0%, hsl(243, 8%, 33%) 59%, hsl(242, 8%, 24%) 60%, hsl(240, 7%, 16%) 100%);
+
+  --color-success: hsl(120, 90%, 68%);
+  --color-warn: hsl(60, 90%, 68%);
+  --color-error: hsl(0, 90%, 68%);
+  --color-info: hsl(180, 90%, 68%);
+
+  --lang-html: hsl(39, 90%, 68%);
+  --lang-js: hsl(84, 90%, 68%);
+  --lang-ts: hsl(197, 90%, 68%);
+  --lang-css: hsl(226, 90%, 68%);
+  --lang-rs: hsl(16, 90%, 68%);
+  --lang-cs: hsl(251, 90%, 68%);
+  --lang-gd: hsl(120, 90%, 68%);
+}

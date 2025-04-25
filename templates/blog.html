@@ -1,0 +1,102 @@
+{% extends "bases/main.html" %}
+
+{% block content %}
+{% if section.content %}
+<article>
+  <div class="subtitle">
+    {{ section.title }}
+  </div>
+  <div class="content">
+    {{ section.content | markdown | safe  }}
+  </div>
+  {% if section.extra.nav %}
+  <nav>
+    {% for nav in section.extra.nav %}
+    <ul class="nav embedded">
+      <li><a href="{{ nav.url }}">{{ nav.name }}</a></li>
+    </ul>
+    {% endfor %}
+  </nav>
+  {% endif %}
+</article>
+{% endif %}
+{% if section.pages %}
+{% for page in section.pages %}
+  {% if not page.extra.hidden %}
+  <article>
+    <div class="subtitle">
+      <a href="{{ page.path }}">{{ page.title }}</a>
+      <ul class="meta">
+        {#- Date indicator -#}
+        {% if page.date %}
+          <li class="date">{{ page.date }}</li>
+        {% endif %}
+
+        {#- Draft indicator -#}
+        {% if page.draft %}
+          <li class="draft-label">Draft</li>
+        {% endif %}
+  
+        {#- Author(s) -#}
+        {% for author in page.authors %}
+          <li class="author">{{ author }}</li>
+        {% endfor %}
+  
+        {#- Tags -#}
+        {%- if page.taxonomies and page.taxonomies.tags -%}
+          {%- for tag in page.taxonomies.tags -%}
+            <li class="tag">
+              <a href="{{ get_taxonomy_url(kind='tags', name=tag, lang=lang) | safe }}">{{ tag }}</a>
+            </li>
+          {%- endfor -%}
+        {%- endif -%}
+      </ul>
+    </div>
+    {% if page.extra and page.extra.tldr -%}
+    <div class="tldr">
+      <span title="Too long; didn't read (summary)">TL;DR</span>
+      <p>{{ page.extra.tldr | markdown | safe }}</p>
+    </div>
+    {% endif %}
+  </article>
+  {% endif %}
+{% endfor %}
+{% elif section.subsections %}
+{% for path in section.subsections %}
+{% set subsection = get_section(path=path) %}
+{% if not subsection.extra.hidden %}
+<article>
+  <div class="subtitle">
+    <a href="{{ subsection.path }}">{{ subsection.title }}</a>
+    <ul class="meta">
+      {#- Draft indicator -#}
+      {% if subsection.draft %}
+        <li class="draft-label">Draft</li>
+      {% endif %}
+
+      {#- Kind indicator -#}
+      {% if subsection.extra.kind %}
+        <li class="kind-label">{{ subsection.extra.kind }}</li>
+      {% endif %}
+    </ul>
+  </div>
+  {% if subsection.extra and subsection.extra.tldr -%}
+  <div class="tldr">
+    <span title="Too long; didn't read (summary)">TL;DR</span>
+    <p>{{ subsection.extra.tldr | markdown | safe }}</p>
+  </div>
+  {% endif %}
+  <div class="content">
+    {{ subsection.content | markdown | safe  }}
+  </div>
+</article>
+{% endif %}
+{% endfor %}
+{% elif not section.content %}
+<article>
+  <div class="content">
+    Nothing here! Either I messed something up in the code, or there is nothing to see here just yet!
+  </div>
+</article>
+{% endif %}
+{% endblock content %}

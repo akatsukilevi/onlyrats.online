@@ -1,0 +1,8 @@
+<div class="youtube{% if class %} {{ class }}{% endif %}">
+  <iframe
+    src="https://youtube.com/embed/{{ id }}{% if autoplay %}?autoplay=1{% endif %}"
+    {% if width %}width="{{ width }}"{% endif %}
+    {% if height %}height="{{ height }}"{% endif %}
+    allowfullscreen>
+  </iframe>
+</div>
