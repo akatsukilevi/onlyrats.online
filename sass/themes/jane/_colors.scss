@@ -1,8 +1,8 @@
 :root {
-  --page-bg: url('/img/themes/jane/background.jpg');
+  --page-bg: url('/img/themes/jane/background.webp');
   --header-bg: url('/img/themes/jane/banner.png');
 
-  --background: hsl(185, 9%, 18%);
+  --background: hsla(185, 9%, 18%, 90%);
   --foreground: hsl(185, 67%, 89%);
   --border-color: hsl(185, 8%, 32%);
 
@@ -17,7 +17,7 @@
   --nav-fg: hsl(185, 67%, 89%);
   --nav-hover-fg: hsl(185, 67%, 89%);
 
-  --article-bg: hsl(185, 8%, 15%);
+  --article-bg: hsla(185, 8%, 15%, 10%);
   --article-heading-bg: linear-gradient(to bottom, hsl(185, 8%, 44%) 0%, hsl(185, 8%, 33%) 59%, hsl(185, 8%, 24%) 60%, hsl(185, 7%, 16%) 100%);
 
   --color-success: hsl(120, 90%, 68%);
