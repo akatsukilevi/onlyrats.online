@@ -11,6 +11,7 @@ There are rats here! More than one, infact
 {% grid() %}
   {{ rat(name="The original rat!", url="OnlyRats", image="onlyrats")}}
   {{ rat(name="The rat that patted the fox", url="CISRaT", image="cisrat")}}
+  {{ rat(name="Wait that's not a rat!", url="Thighs of Calydon", image="thighs")}}
 {% end %}
 
 Drop them some cheese.
