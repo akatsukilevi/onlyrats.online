@@ -1,6 +1,8 @@
-# [OnlyRats](https://onlyrats.site/)
+# [OnlyRats](https://onlyrats.online/)
 
 I committed to a joke that was taken too far... help.
+
+I AM STILL UPDATING THIS THING, WHY-
 
 Made with Zola
 
